@@ -1,0 +1,362 @@
+:root {
+    --bg-color: #0f0a0a;
+    --text-color: #fdf5e6;
+    --accent-color: #ff7b54;
+    --accent-glow: rgba(255, 123, 84, 0.3);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    font-family: 'Outfit', sans-serif;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+}
+
+/* Background Orbs */
+.bg-orbs {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    z-index: -1;
+    pointer-events: none;
+}
+
+.orb {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(80px);
+    opacity: 0.4;
+    animation: float 20s infinite ease-in-out alternate;
+}
+
+.orb-1 {
+    width: 40vw;
+    height: 40vw;
+    background: #ff7b54;
+    top: -10vw;
+    left: -10vw;
+}
+
+.orb-2 {
+    width: 30vw;
+    height: 30vw;
+    background: #c13a3a;
+    bottom: 20vh;
+    right: -10vw;
+    animation-delay: -5s;
+    animation-duration: 25s;
+}
+
+.orb-3 {
+    width: 35vw;
+    height: 35vw;
+    background: #7b2cbf;
+    top: 40vh;
+    left: 40vw;
+    animation-delay: -10s;
+    animation-duration: 30s;
+}
+
+@keyframes float {
+    0% { transform: translate(0, 0) scale(1); }
+    33% { transform: translate(5vw, 5vh) scale(1.1); }
+    66% { transform: translate(-5vw, 10vh) scale(0.9); }
+    100% { transform: translate(0, 0) scale(1); }
+}
+
+
+
+/* Hero Section */
+.hero {
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    padding: 2rem;
+}
+
+.hero-content {
+    text-align: center;
+    max-width: 800px;
+}
+
+.hero-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(3rem, 8vw, 7rem);
+    line-height: 1.1;
+    margin-bottom: 1.5rem;
+    font-weight: 400;
+    opacity: 0;
+    transform: translateY(30px);
+}
+
+.hero-title .italic {
+    font-style: italic;
+    color: var(--accent-color);
+}
+
+.hero-subtitle {
+    font-size: clamp(1rem, 2vw, 1.25rem);
+    font-weight: 300;
+    opacity: 0;
+    transform: translateY(20px);
+    letter-spacing: 0.5px;
+    line-height: 1.6;
+    color: rgba(253, 245, 230, 0.8);
+}
+
+.celebrate-btn {
+    position: fixed;
+    bottom: 40px;
+    right: 40px;
+    z-index: 1000;
+    padding: 1rem 2.5rem;
+    font-family: 'Outfit', sans-serif;
+    font-size: 1.2rem;
+    font-weight: 500;
+    color: var(--text-color);
+    background: rgba(255, 123, 84, 0.15);
+    border: 1px solid rgba(255, 123, 84, 0.5);
+    border-radius: 50px;
+    cursor: pointer;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 0 20px rgba(255, 123, 84, 0.2);
+    transition: all 0.3s ease;
+    opacity: 0;
+    transform: translateY(20px);
+}
+
+.celebrate-btn:hover {
+    background: rgba(255, 123, 84, 0.3);
+    box-shadow: 0 0 40px rgba(255, 123, 84, 0.5);
+    transform: translateY(-5px) scale(1.05);
+}
+
+.scroll-indicator {
+    position: absolute;
+    bottom: 40px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    opacity: 0;
+}
+
+.scroll-indicator span {
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: rgba(253, 245, 230, 0.5);
+}
+
+.scroll-indicator .line {
+    width: 1px;
+    height: 60px;
+    background: linear-gradient(to bottom, rgba(253, 245, 230, 0.5), transparent);
+}
+
+/* Gallery Section */
+.gallery-section {
+    padding: 15vh 5vw;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.5rem, 6vw, 5rem);
+    text-align: center;
+    margin-bottom: 10vh;
+    font-style: italic;
+    color: var(--accent-color);
+}
+
+.gallery-wrapper {
+    width: 100%;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.gallery {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 4rem 2rem;
+    justify-items: center;
+    width: 100%;
+}
+
+.gallery-item-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.item-header {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.8rem;
+    font-style: italic;
+    color: var(--text-color);
+    text-shadow: 0 0 15px var(--accent-glow);
+    opacity: 0.9;
+    letter-spacing: 1px;
+    text-align: center;
+}
+
+.gallery-item {
+    width: clamp(150px, 20vw, 250px);
+    height: clamp(150px, 20vw, 250px);
+    border-radius: 50%;
+    overflow: hidden;
+    position: relative;
+    transform-origin: center center;
+    box-shadow: 0 0 40px rgba(255, 123, 84, 0.15), inset 0 0 20px rgba(255, 123, 84, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: rgba(255, 255, 255, 0.03);
+    backdrop-filter: blur(10px);
+    transition: all 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+    cursor: pointer;
+    z-index: 1;
+}
+
+.gallery-item:hover {
+    width: clamp(250px, 40vw, 500px);
+    max-width: 90%;
+    height: auto;
+    /* Removed aspect-ratio: 16 / 9 so it doesn't crop the picture */
+    border-radius: 12px;
+    box-shadow: 0 0 60px rgba(255, 123, 84, 0.4), inset 0 0 30px rgba(255, 123, 84, 0.2);
+    border: 1px solid rgba(255, 123, 84, 0.6);
+    transform: translateY(-5px);
+    z-index: 50;
+}
+
+.gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: all 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.gallery-item:hover img {
+    height: auto; /* Lets the picture dictate the container's height */
+    object-fit: cover; /* No more black bars */
+    transform: scale(1); /* Remove extra zoom so the edges aren't cut off */
+}
+
+/* Adjust the framing for the specific tall portrait so the face is visible inside the circle */
+#christmas-pic {
+    object-position: center 10%;
+}
+
+.gallery-item:hover #christmas-pic {
+    object-position: center center;
+}
+
+/* Footer */
+.footer {
+    padding: 5rem 0 10rem 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    color: rgba(253, 245, 230, 0.5);
+    gap: 3rem;
+    width: 100%;
+}
+
+.footer-text {
+    font-size: 1.3rem;
+    margin-bottom: 1rem;
+    max-width: 450px;
+    text-align: center;
+    padding: 2rem 2.5rem;
+    border: 1px solid rgba(255, 123, 84, 0.3);
+    background: rgba(255, 123, 84, 0.05);
+    border-radius: 16px;
+    box-shadow: 0 0 20px rgba(255, 123, 84, 0.05);
+    backdrop-filter: blur(5px);
+    line-height: 1.6;
+}
+
+.secret-btn.left-btn {
+    position: fixed;
+    bottom: 40px;
+    left: 40px;
+    z-index: 1000;
+    padding: 0.5rem 1.5rem;
+    font-family: 'Outfit', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--text-color);
+    background: rgba(255, 123, 84, 0.15);
+    border: 1px solid rgba(255, 123, 84, 0.5);
+    border-radius: 50px;
+    cursor: pointer;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 0 20px rgba(255, 123, 84, 0.2);
+    transition: background 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease, transform 0.3s ease;
+    
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(20px);
+}
+
+.secret-btn.left-btn:hover {
+    background: rgba(255, 123, 84, 0.3);
+    box-shadow: 0 0 40px rgba(255, 123, 84, 0.5);
+    transform: translateY(-5px) scale(1.05);
+}
+
+.final-picture-container {
+    display: none;
+    opacity: 0;
+    transform: translateY(30px);
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+    width: 90%;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.final-picture {
+    width: 100%;
+    height: auto;
+    border-radius: 16px;
+    box-shadow: 0 0 60px rgba(255, 123, 84, 0.2);
+    border: 1px solid rgba(255, 123, 84, 0.3);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .gallery {
+        grid-template-columns: 1fr;
+        gap: 4rem;
+    }
+    .gallery-item {
+        width: 70vw;
+        height: 70vw;
+    }
+    .gallery-item:hover {
+        width: 90vw;
+    }
+}
